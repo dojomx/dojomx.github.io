@@ -293,8 +293,8 @@
   }
   footer a:hover { color: var(--ink); }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
+    /* ── RESPONSIVE ── */
+  /* @media (max-width: 768px) {
     header { padding: 0 1.25rem; }
     nav { display: none; flex-direction: column; gap: 1.2rem; }
     nav.open {
@@ -306,6 +306,59 @@
       border-bottom: 1px solid rgba(26,24,20,0.08);
     }
     .menu-btn { display: flex; }  
+    main { padding: 1.5rem 1rem; }
+    .masonry { columns: 2 140px; }
+    .lb-prev { left: 0.5rem; }
+    .lb-next { right: 0.5rem; }
+  } */
+@media (max-width: 768px) {
+    header { 
+      padding: 0 1rem; 
+      flex-direction: column; /* Cambiamos a columna para dar espacio a las pestañas */
+      height: auto; /* Dejamos que la altura se adapte al contenido */
+      align-items: center;
+    }
+
+    .logo {
+      padding: 0.8rem 0 0.5rem 0; /* Espaciado para el logo arriba */
+    }
+
+    /* Modificamos las variables del tamaño del menú para que la galería no se encime */
+    :root {
+      --nav-h: 95px; 
+    }
+
+    /* Mantenemos el nav siempre visible en formato de pestañas */
+    nav { 
+      display: flex !important; 
+      flex-direction: row; 
+      gap: 0; 
+      width: 100%; 
+      justify-content: center;
+    }
+
+    nav a {
+      flex: 1; /* Cada pestaña toma el mismo ancho */
+      text-align: center;
+      padding: 0.6rem 0;
+      font-size: 0.85rem; /* Un pelín más grande para que sea fácil de tocar con el dedo */
+    }
+
+    /* Ajustamos la línea decorativa inferior para que abarque más espacio en la pestaña móvil */
+    nav a::after {
+      bottom: 0;
+    }
+
+    /* Ya no necesitamos el comportamiento de menú desplegable */
+    nav.open {
+      position: static;
+      padding: 0;
+      border-bottom: none;
+    }
+
+    /* Ocultamos el botón de hamburguesa por completo */
+    .menu-btn { display: none !important; }  
+
     main { padding: 1.5rem 1rem; }
     .masonry { columns: 2 140px; }
     .lb-prev { left: 0.5rem; }
@@ -480,9 +533,9 @@
 
 <script>
 // --- mobile menu ---
-  const menuBtn = document.getElementById('menuBtn');
-  const nav = document.getElementById('nav');
-  menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+  // --- const menuBtn = document.getElementById('menuBtn'); ---
+  // --- const nav = document.getElementById('nav'); ---
+  // --- menuBtn.addEventListener('click', () => nav.classList.toggle('open')); ---
 
   // --- lightbox adaptado para imágenes y videos ---
   const items = Array.from(document.querySelectorAll('.item'));
